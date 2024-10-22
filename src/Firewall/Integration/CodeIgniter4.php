@@ -6,6 +6,11 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
+ * 
+ * File Correction: APP\vendor\Shieldon\src\Firewall\Integration\CodeIgniter4
+ * Source instalation: https://shieldon.io/en/guide/codeigniter.html#codeigniter-4
+ * Source Correction: https://forum.codeigniter.com/showthread.php?tid=78109&pid=382427#pid382427
+ * 
  */
 
 declare(strict_types=1);
@@ -75,13 +80,13 @@ class CodeIgniter4 implements FilterInterface
      *
      * @return mixed
      */
-    public function before(Request $request)
+    public function before(Request $request, $arguments = null)
     {
         if ($request->isCLI()) {
             return;
         }
 
-        // CodeIgniter 4 is not a PSR-7 compatible framework, therefore we don't
+        // CodeIgniter 4 is not a PSR-7 compatible framework, therefore we don't 
         // pass the Reqest and Reposne to Firewall instance.
         // Shieldon will create them by its HTTP factory.
         $firewall = new Firewall();
@@ -112,8 +117,8 @@ class CodeIgniter4 implements FilterInterface
      *
      * @return mixed
      */
-    public function after(Request $request, Response $response)
+    public function after(Request $request, Response $response, $arguments = null)
     {
-        // We don't have anything to do here.
+
     }
 }
