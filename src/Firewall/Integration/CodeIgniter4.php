@@ -23,7 +23,6 @@ use CodeIgniter\HTTP\RequestInterface as Request;
 use CodeIgniter\HTTP\ResponseInterface as Response;
 use CodeIgniter\Filters\FilterInterface;
 use Shieldon\Firewall\Captcha\Csrf;
-use function dirname;
 use function csrf_token; // CodeIgniter 4
 use function csrf_hash; // CodeIgniter 4
 
@@ -59,9 +58,7 @@ class CodeIgniter4 implements FilterInterface
      */
     public function __construct(string $storage = '', string $panelUri = '')
     {
-        $dir = dirname($_SERVER['SCRIPT_FILENAME']);
-
-        $this->storage = $dir . '/../writable/shieldon_firewall';
+        $this->storage = WRITEPATH . 'shieldon_firewall';
         $this->panelUri = '/firewall/panel/';
 
         if ('' !== $storage) {
